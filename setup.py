@@ -25,7 +25,7 @@ name = 'nanohub'
 ensure_python('>=3.3')
 
 # Get our version
-version = get_version(pjoin('nanohubremote', '_version.py'))
+version = get_version(pjoin('nanohub', '_version.py'))
 
 long_description = ""
 with open("README.md", "r") as fh:
@@ -60,8 +60,8 @@ setup_args = {
     ],
     'include_package_data' : True,
     'install_requires' : [
-	'nanohub.remote' : '>0.1.0',
-	'nanohub.uidl' : '>0.1.0'
+	    'nanohub.remote>=0.1.0',
+	    'nanohub.uidl>=0.1.0'
     ],
     'extras_require' : {
         'test': [

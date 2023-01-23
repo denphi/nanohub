@@ -23,5 +23,11 @@
 #  Authors:
 #  Daniel Mejia (denphi), Purdue University (denphi@denphi.com)
 
-
-from nanohubuidl import *
+import nanohubuidl
+import sys
+import imp
+from pkgutil import iter_modules
+fp, path, desc = imp.find_module("nanohubuidl")
+for submodule in iter_modules(nanohubuidl.__path__):
+    sys.modules['nanohub.uidl.' + str(submodule.name)] = imp.load_module(
+        'nanohubuidl.' + str(submodule.name), fp, path, desc)

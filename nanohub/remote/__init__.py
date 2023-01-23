@@ -23,5 +23,11 @@
 #  Authors:
 #  Daniel Mejia (denphi), Purdue University (denphi@denphi.com)
 
-
-from nanohubremote import *
+import nanohubremote
+import sys
+import imp
+from pkgutil import iter_modules
+fp, path, desc = imp.find_module("nanohubremote")
+for submodule in iter_modules(nanohubremote.__path__):
+    sys.modules['nanohub.remote.' + str(submodule.name)] = imp.load_module(
+        'nanohubremote.' + str(submodule.name), fp, path, desc)
